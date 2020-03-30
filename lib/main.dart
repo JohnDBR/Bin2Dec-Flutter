@@ -64,7 +64,7 @@ class _MainPageState extends State<MainPage> {
           alignment: Alignment.center,
           // color: Color.blue,
           child: new Column(
-            // crossAxisAlignment: CrossAxisAlignment.stretch,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisSize: MainAxisSize.max,
             children: <Widget>[
               Row(mainAxisSize: MainAxisSize.max,
@@ -76,7 +76,9 @@ class _MainPageState extends State<MainPage> {
                   children: <Widget>[
                     new Text('$_bin',
                         style: new TextStyle(
-                            fontSize: 80, color: new Color(0xFFff5722)))
+                            fontSize: 80,
+                            fontWeight: FontWeight.bold,
+                            color: new Color(0xFFff5722)))
                   ]),
               Row(
                   mainAxisSize: MainAxisSize.max,
@@ -84,7 +86,9 @@ class _MainPageState extends State<MainPage> {
                   children: <Widget>[
                     new Text('$_dec',
                         style: new TextStyle(
-                            fontSize: 80, color: new Color(0xFFff5722)))
+                            fontSize: 80,
+                            fontWeight: FontWeight.bold,
+                            color: new Color(0xFFff5722)))
                   ]),
               Expanded(
                   child: Row(
