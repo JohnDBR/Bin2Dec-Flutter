@@ -76,7 +76,7 @@ class _MainPageState extends State<MainPage> {
                   children: <Widget>[
                     new Text('$_bin',
                         style: new TextStyle(
-                            fontSize: 80,
+                            fontSize: 35,
                             fontWeight: FontWeight.bold,
                             color: new Color(0xFFff5722)))
                   ]),
@@ -86,10 +86,11 @@ class _MainPageState extends State<MainPage> {
                   children: <Widget>[
                     new Text('$_dec',
                         style: new TextStyle(
-                            fontSize: 80,
+                            fontSize: 35,
                             fontWeight: FontWeight.bold,
                             color: new Color(0xFFff5722)))
                   ]),
+              SizedBox(height: 10),
               Expanded(
                   child: Row(
                       mainAxisSize: MainAxisSize.max,
