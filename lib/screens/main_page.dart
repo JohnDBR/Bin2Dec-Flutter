@@ -1,27 +1,20 @@
-import 'package:bin2dec/widgets/dec2bin.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:bin2dec/models/single_model.dart';
 import 'package:bin2dec/widgets/bin2dec.dart';
+import 'package:bin2dec/widgets/dec2bin.dart';
 
-class MainPage extends StatefulWidget {
-  MainPage({Key key, this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  _MainPageState createState() => _MainPageState();
-}
-
-class _MainPageState extends State<MainPage> {
-  bool _bin2dec = true;
-
-  void _changeLayout() {
-    setState(() {
-      _bin2dec = !_bin2dec;
-    });
-  }
-
+class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    return ChangeNotifierProvider<SingleModel>(
+      //      <--- ChangeNotifierProvider
+      create: (context) => SingleModel(bin : '0', dec: '0'),
+      child: _buildUi()
+    );
+  }
+
+  Widget _buildUi() {
     return MaterialApp(
         title: 'Bin2Dec',
         theme: ThemeData(
@@ -29,7 +22,12 @@ class _MainPageState extends State<MainPage> {
         ),
         home: Scaffold(
             appBar: new AppBar(
-              title: _bin2dec ? Text('Bin2Dec') : Text('Dec2Bin'),
+              title: Consumer<SingleModel>(
+                //                  <--- Consumer
+                builder: (context, singleModel, child) {
+                  return singleModel.bin2dec ? Text('Bin2Dec') : Text('Dec2Bin');
+                },
+              ),
             ),
             body: Center(
                 child: Container(
@@ -39,22 +37,28 @@ class _MainPageState extends State<MainPage> {
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         mainAxisSize: MainAxisSize.max,
                         children: <Widget>[
-                          // Row(
-                          //     mainAxisSize: MainAxisSize.max,
-                          //     children: <Widget>[
-                          //       new Text('Binario -> Decimal')
-                          //     ]),
                           Container(
                               alignment: Alignment.centerLeft,
-                              child: FlatButton(
-                                  onPressed: () {
-                                    _changeLayout();
+                              child: Consumer<SingleModel>(
+                                  //                  <--- Consumer
+                                  builder: (context, singleModel, child) {
+                                    return FlatButton(
+                                      onPressed: () {
+                                        singleModel.changeLayout();
+                                      },
+                                      child: Text('Binario -> Decimal')
+                                    );
                                   },
-                                  child: Text('Binario -> Decimal'))),
+                                )),
                           Expanded(
-                              child: _bin2dec
+                              child: Consumer<SingleModel>(
+                                //                  <--- Consumer
+                                builder: (context, singleModel, child) {
+                                  return singleModel.bin2dec
                                   ? Bin2Dec()
-                                  : Dec2Bin())
+                                  : Dec2Bin();
+                                },
+                              ))
                         ])))));
   }
 }

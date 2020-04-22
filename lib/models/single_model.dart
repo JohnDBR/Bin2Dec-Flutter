@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 class SingleModel extends ChangeNotifier {
   String bin = "0";
   String dec = "0";
+  bool bin2dec = true;
+
   SingleModel({this.bin, this.dec});
 
   void addToBin(String anotherBin) {
@@ -36,6 +38,11 @@ class SingleModel extends ChangeNotifier {
   void clear() {
     bin = '0';
     dec = '0';
+    notifyListeners();
+  }
+
+  void changeLayout() {
+    bin2dec = !bin2dec;
     notifyListeners();
   }
 }
