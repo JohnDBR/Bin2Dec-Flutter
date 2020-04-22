@@ -3,16 +3,12 @@ import 'package:provider/provider.dart';
 import 'package:bin2dec/models/single_model.dart';
 
 class Bin2Dec extends StatelessWidget {
+  final SingleModel singleModel;
+
+  Bin2Dec({Key key, @required this.singleModel}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<SingleModel>(
-      //      <--- ChangeNotifierProvider
-      create: (context) => SingleModel(bin : '0', dec: '0'),
-      child: _buildUi()
-    );
-  }
-
-  Widget _buildUi() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       mainAxisSize: MainAxisSize.max,

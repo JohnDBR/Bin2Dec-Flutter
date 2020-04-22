@@ -45,6 +45,7 @@ class MainPage extends StatelessWidget {
                                     return FlatButton(
                                       onPressed: () {
                                         singleModel.changeLayout();
+                                        // singleModel.clear(); It's impresive without cleaning!
                                       },
                                       child: Text('Binario -> Decimal')
                                     );
@@ -55,8 +56,8 @@ class MainPage extends StatelessWidget {
                                 //                  <--- Consumer
                                 builder: (context, singleModel, child) {
                                   return singleModel.bin2dec
-                                  ? Bin2Dec()
-                                  : Dec2Bin();
+                                  ? Bin2Dec(singleModel: singleModel)
+                                  : Dec2Bin(singleModel: singleModel);
                                 },
                               ))
                         ])))));
