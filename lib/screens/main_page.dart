@@ -53,8 +53,8 @@ class _MainPageState extends State<MainPage> {
                                   child: Text('Binario -> Decimal'))),
                           Expanded(
                               child: _bin2dec
-                                  ? Bin2Dec(title: 'Bin2Dec')
-                                  : Dec2Bin(title: 'Dec2Bin'))
+                                  ? Bin2Dec()
+                                  : Dec2Bin())
                         ])))));
   }
 }
